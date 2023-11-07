@@ -20,7 +20,7 @@ const fetchBlogPost = async (slug: string): Promise<BlogItem> => {
     "fields.slug[match]": slug,
   };
   const queryResult = await client.getEntries(queryOptions);
-  return queryResult.items[0];
+  return queryResult.items[0] as any;
 };
 
 export default async function BlogPage(props: BlogPageProps) {
@@ -29,7 +29,7 @@ export default async function BlogPage(props: BlogPageProps) {
 
   const article = await fetchBlogPost(slug);
 
-  const { title, date, content } = article?.fields;
+  const { title, date, content } = article.fields;
 
   return (
     <main className="min-h-screen p-24 flex justify-center">

@@ -10,7 +10,7 @@ const client = createClient({
 
 const getBlogEntries = async (): Promise<BlogQueryResult> => {
   const entries = await client.getEntries({ content_type: "blog" });
-  return entries;
+  return entries as any;
 };
 
 export default async function Home() {
