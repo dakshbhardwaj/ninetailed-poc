@@ -29,7 +29,9 @@ export default async function BlogPage(props: BlogPageProps) {
 
   const article = await fetchBlogPost(slug);
 
-  const { title, date, content } = article.fields;
+  console.log(article);
+
+  const { title, date, content, eventData } = article.fields;
 
   return (
     <main className="min-h-screen p-24 flex justify-center">
@@ -46,6 +48,7 @@ export default async function BlogPage(props: BlogPageProps) {
         <div className="[&>p]:mb-8 [&>h2]:font-extrabold">
           {documentToReactComponents(content)}
         </div>
+        {eventData && <div className="mb-8">{eventData.author}</div>}
       </div>
     </main>
   );
